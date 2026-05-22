@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 const RULES = [
   {
@@ -79,18 +79,16 @@ export default function Home() {
   useRevealOnScroll();
 
   return (
-    <main className="min-h-screen bg-[#0a0a0f] text-white relative overflow-x-hidden">
+    <main 
+      className="min-h-screen text-white relative overflow-x-hidden bg-cover bg-top bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url('${import.meta.env.BASE_URL}vi-squad-bg.jpg')` }}
+    >
       <div className="noise-overlay" />
 
       {/* ── HERO SECTION ── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-center bg-cover bg-no-repeat"
-          style={{ backgroundImage: "url('/vi-squad-bg.jpg')" }}
-        />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0a0a0f]" />
+        {/* Dark overlay covering the fixed global background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#0a0a0f]/95" />
         <div className="split-bg" />
         <Particles />
 
@@ -161,7 +159,7 @@ export default function Home() {
       </section>
 
       {/* ── INTRO SECTION ── */}
-      <section className="relative py-24 px-6">
+      <section className="relative py-24 px-6 bg-[#0a0a0f]/60 backdrop-blur-sm">
         <div className="max-w-3xl mx-auto text-center reveal">
           <p className="bracket-tag text-base mb-4">About Us</p>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 glow-white">
@@ -183,7 +181,7 @@ export default function Home() {
       </section>
 
       {/* ── LEADER SECTION ── */}
-      <section id="leader" className="relative py-24 px-6 overflow-hidden">
+      <section id="leader" className="relative py-24 px-6 overflow-hidden bg-[#0a0a0f]/40">
         {/* bg flair */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/10 to-transparent pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-900/10 blur-3xl pointer-events-none" />
@@ -203,7 +201,7 @@ export default function Home() {
                 style={{ margin: "-24px", animationDelay: "1s" }}
               />
               <img
-                src="/sui.jpeg"
+                src={`${import.meta.env.BASE_URL}sui.jpeg`}
                 alt="Sui — VI Squad Leader"
                 className="leader-circle w-52 h-52 md:w-64 md:h-64 object-cover object-top"
               />
@@ -242,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* ── RULES SECTION ── */}
-      <section id="rules" className="relative py-24 px-6">
+      <section id="rules" className="relative py-24 px-6 bg-[#0a0a0f]/80 backdrop-blur-sm">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-950/8 to-transparent pointer-events-none" />
 
         <div className="max-w-5xl mx-auto relative z-10">
@@ -258,7 +256,7 @@ export default function Home() {
             {RULES.map((rule, i) => (
               <div
                 key={rule.num}
-                className="rule-card rounded-lg p-6 reveal"
+                className="rule-card rounded-lg p-6 reveal bg-[#111118]/80 border border-purple-900/20 backdrop-blur-sm shadow-xl"
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="flex items-start gap-4">
@@ -289,7 +287,7 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="relative py-12 px-6 border-t border-purple-900/30">
+      <footer className="relative py-12 px-6 border-t border-purple-900/30 bg-[#07070a]">
         <div className="divider-glow mb-8" />
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
           <p className="bracket-tag text-2xl font-black">［声1］ VI Squad.</p>
@@ -308,4 +306,4 @@ export default function Home() {
       </footer>
     </main>
   );
-      }
+}
