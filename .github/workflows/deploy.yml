@@ -37,6 +37,26 @@ jobs:
           version: 9
 
       - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build
+        run: pnpm vite build --config vite.github.config.ts
+        env:
+          GITHUB_REPO_NAME: "/${{ github.event.repository.name }}/"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4          version: 9
+
+      - name: Install dependencies
         run: pnpm install
 
       - name: Build
