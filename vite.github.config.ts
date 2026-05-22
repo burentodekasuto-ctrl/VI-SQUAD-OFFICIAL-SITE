@@ -3,10 +3,8 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
-const repoName = process.env.GITHUB_REPO_NAME || "/";
-
 export default defineConfig({
-  base: repoName,
+  base: "/VI-SQUAD-OFFICIAL-SITE/",
   plugins: [
     react(),
     tailwindcss(),
