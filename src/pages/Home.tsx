@@ -141,14 +141,14 @@ export default function Home() {
             className="bracket-tag text-xl md:text-2xl font-bold mb-4 opacity-0-init slide-up"
             style={{ animationDelay: "0ms" }}
           >
-            ［水晶1］
+            ［水晶］
           </p>
 
           <h1
-            className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none mb-2 opacity-0-init slide-up glow-white"
+            className="text-5xl md:text-7xl lg:text-9xl font-black tracking-tight leading-none mb-2 opacity-0-init slide-up glow-white"
             style={{ animationDelay: "150ms" }}
           >
-            VI Squad
+            Crystal Squad
             <span className="glow-purple text-purple-400">.</span>
           </h1>
 
@@ -206,17 +206,17 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center reveal">
           <p className="bracket-tag text-base mb-4">About Us</p>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 glow-white">
-            What is VI Squad?
+            What is Crystal Squad?
           </h2>
           <div className="divider-glow mb-8" />
           <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            VI Squad is an elite Voice Impression Community dedicated to the art of vocal
+            Crystal Squad is an elite Voice Impression Community dedicated to the art of vocal
             performance. Born from the worlds of Demon Slayer and Jujutsu Kaisen, we
             bring together voice impressionists, anime enthusiasts, and performers who
             share a passion for authentic character voices.
           </p>
           <p className="text-gray-400 text-base leading-relaxed">
-            Whether you're a seasoned impressionist or just starting out, VI Squad is
+            Whether you're a seasoned impressionist or just starting out, Crystal Squad is
             your home. We train, share, compete, and grow together — united by the power
             of 水晶 (voice).
           </p>
@@ -242,12 +242,12 @@ export default function Home() {
               />
               <img
                 src={`${baseUrl}sui.jpeg`}
-                alt="Sui — VI Squad Leader"
+                alt="Sui — Crystal Squad Leader"
                 className="leader-circle w-52 h-52 md:w-64 md:h-64 object-cover object-top"
               />
             </div>
             <div className="mt-6 text-center">
-              <p className="bracket-tag text-lg font-bold">［水晶1］ Sui.</p>
+              <p className="bracket-tag text-lg font-bold">［水晶］ Sui.</p>
               <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mt-1 mb-4">
                 Squad Leader
               </p>
@@ -291,7 +291,7 @@ export default function Home() {
             </h2>
             <div className="divider-glow mb-6" />
             <p className="text-gray-300 text-lg leading-relaxed mb-4">
-              At the helm of VI Squad stands <span className="text-purple-300 font-semibold">Sui</span> —
+              At the helm of Crystal Squad stands <span className="text-purple-300 font-semibold">Sui</span> —
               a force of precision, artistry, and authority. With a voice that commands
               silence and inspires awe, she founded this community as a sanctuary for
               those who live and breathe voice acting.
@@ -395,7 +395,7 @@ export default function Home() {
       <footer className="relative py-12 px-6 border-t border-purple-900/30 bg-[#07070a]">
         <div className="divider-glow mb-8" />
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
-          <p className="bracket-tag text-2xl font-black">［水晶1］ VI Squad.</p>
+          <p className="bracket-tag text-2xl font-black">［水晶］ Crystal Squad.</p>
           <p className="text-xs uppercase tracking-[0.3em] text-gray-600">
             Demon Slayer × Jujutsu Kaisen · Voice Impression Community
           </p>
@@ -405,10 +405,10 @@ export default function Home() {
             <span className="text-purple-800/60 font-bold tracking-widest text-sm">呪</span>
           </div>
           <p className="text-gray-700 text-xs mt-4">
-            © 2026 VI Squad · All rights reserved · Founded by Sui.
+            © 2026 Crystal Squad · All rights reserved · Founded by Sui.
           </p>
         </div>
       </footer>
     </main>
   );
-            }
+      }
