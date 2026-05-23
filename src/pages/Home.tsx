@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const RULES = [
   {
@@ -30,6 +30,16 @@ const RULES = [
     num: "06",
     title: "Follow the Leader",
     desc: "Sui's word is final. The leader and mods maintain order — their decisions are to be respected at all times.",
+  },
+  {
+    num: "07",
+    title: "Age Requirement",
+    desc: "Strictly 15+ years old only. However, 14-year-olds may be permitted entry if they demonstrate proper maturity and behavior.",
+  },
+  {
+    num: "08",
+    title: "Squad Requirements",
+    desc: "All members must adopt the official squad name format. Additionally, you must be capable of voice impressing at least 5 different characters.",
   },
 ];
 
@@ -75,19 +85,46 @@ function Particles() {
   );
 }
 
+// Transform routine to generate mathematical bold-sans lettering
+function stylizeText(text: string) {
+  const normal = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const boldSans = "𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣加入𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵";
+  
+  return text.split('').map(char => {
+    const idx = normal.indexOf(char);
+    if (idx > -1) {
+      return boldSans.substring(idx * 2, (idx * 2) + 2);
+    }
+    return char;
+  }).join('');
+}
+
 export default function Home() {
   useRevealOnScroll();
+  const baseUrl = import.meta.env.BASE_URL;
+
+  // Name Generator State
+  const [inputName, setInputName] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  const stylizedName = inputName ? stylizeText(inputName) : "Sui";
+  const fullGeneratedName = `水晶 - 𝗦𝘂𝗶.`.replace("𝗦𝘂𝗶", stylizedName);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(fullGeneratedName);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <main 
       className="min-h-screen text-white relative overflow-x-hidden bg-cover bg-top bg-no-repeat bg-fixed"
-      style={{ backgroundImage: `url('${import.meta.env.BASE_URL}vi-squad-bg.jpg')` }}
+      style={{ backgroundImage: `url('${baseUrl}vi-squad-bg.jpg')` }}
     >
       <div className="noise-overlay" />
 
       {/* ── HERO SECTION ── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Dark overlay covering the fixed global background */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#0a0a0f]/95" />
         <div className="split-bg" />
         <Particles />
@@ -98,7 +135,7 @@ export default function Home() {
             className="bracket-tag text-xl md:text-2xl font-bold mb-4 opacity-0-init slide-up"
             style={{ animationDelay: "0ms" }}
           >
-            ［声1］
+            ［水晶1］
           </p>
 
           <h1
@@ -135,7 +172,7 @@ export default function Home() {
           >
             A Voice Impression Community where passion meets artistry.
             <br />
-            Step into the world of声 — and let your voice be heard.
+            Step into the world of 水晶 — and let your voice be heard.
           </p>
 
           <div
@@ -175,14 +212,13 @@ export default function Home() {
           <p className="text-gray-400 text-base leading-relaxed">
             Whether you're a seasoned impressionist or just starting out, VI Squad is
             your home. We train, share, compete, and grow together — united by the power
-            of声 (voice).
+            of 水晶 (voice).
           </p>
         </div>
       </section>
 
       {/* ── LEADER SECTION ── */}
       <section id="leader" className="relative py-24 px-6 overflow-hidden bg-[#0a0a0f]/40">
-        {/* bg flair */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/10 to-transparent pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-900/10 blur-3xl pointer-events-none" />
 
@@ -190,24 +226,22 @@ export default function Home() {
           {/* Profile circle */}
           <div className="flex-shrink-0 reveal flex flex-col items-center">
             <div className="relative">
-              {/* Outer pulse ring */}
               <div
                 className="absolute inset-0 rounded-full border-2 border-purple-500/30 pulse-ring"
                 style={{ margin: "-12px" }}
               />
-              {/* Second ring */}
               <div
                 className="absolute inset-0 rounded-full border border-red-700/20 pulse-ring"
                 style={{ margin: "-24px", animationDelay: "1s" }}
               />
               <img
-                src={`${import.meta.env.BASE_URL}sui.jpeg`}
+                src={`${baseUrl}sui.jpeg`}
                 alt="Sui — VI Squad Leader"
                 className="leader-circle w-52 h-52 md:w-64 md:h-64 object-cover object-top"
               />
             </div>
             <div className="mt-6 text-center">
-              <p className="bracket-tag text-lg font-bold">［声1］ Sui.</p>
+              <p className="bracket-tag text-lg font-bold">［水晶1］ Sui.</p>
               <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mt-1">
                 Squad Leader
               </p>
@@ -235,6 +269,42 @@ export default function Home() {
               <span className="w-2 h-2 rounded-full bg-purple-400 shimmer" />
               <span className="text-purple-300 text-sm uppercase tracking-widest">Active Leader</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── MEMBER NAME GENERATOR SECTION ── */}
+      <section id="generator" className="relative py-20 px-6 bg-[#0a0a0f]/60 backdrop-blur-sm border-t border-purple-900/20">
+        <div className="max-w-xl mx-auto text-center reveal">
+          <p className="bracket-tag text-sm mb-3">Identity Setup</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 glow-white">Name Generator</h2>
+          <p className="text-gray-400 text-sm mb-8">Generate your official uniform nickname for the community server channels.</p>
+          
+          <div className="bg-[#111118]/90 border border-purple-500/20 rounded-lg p-6 shadow-2xl backdrop-blur-sm text-left">
+            <label className="block text-xs uppercase tracking-wider text-purple-400 font-semibold mb-2 ml-1">
+              Generate Your Member Name Here, Example "Sui"
+            </label>
+            <input 
+              type="text" 
+              placeholder="Enter your nickname..." 
+              value={inputName}
+              onChange={(e) => setInputName(e.target.value)}
+              maxLength={15}
+              className="w-full bg-[#0a0a0f] border border-gray-800 focus:border-purple-500 focus:outline-none text-white px-4 py-3 rounded text-center tracking-wide text-base transition-all mb-6 font-medium"
+            />
+
+            <div className="bg-[#0a0a0f] border border-dashed border-purple-500/30 rounded p-4 relative min-h-[56px] flex items-center justify-center mb-4">
+              <span className="text-xl font-bold tracking-wide select-all text-purple-200 font-mono">
+                {fullGeneratedName}
+              </span>
+            </div>
+
+            <button
+              onClick={handleCopy}
+              className="w-full bg-purple-600/20 hover:bg-purple-600/40 border border-purple-500/50 text-purple-300 py-2.5 rounded text-xs uppercase tracking-widest transition-all active:scale-[0.98]"
+            >
+              {copied ? "✓ Copied to Clipboard!" : "Copy Nickname"}
+            </button>
           </div>
         </div>
       </section>
@@ -290,7 +360,7 @@ export default function Home() {
       <footer className="relative py-12 px-6 border-t border-purple-900/30 bg-[#07070a]">
         <div className="divider-glow mb-8" />
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-4 text-center">
-          <p className="bracket-tag text-2xl font-black">［声1］ VI Squad.</p>
+          <p className="bracket-tag text-2xl font-black">［水晶1］ VI Squad.</p>
           <p className="text-xs uppercase tracking-[0.3em] text-gray-600">
             Demon Slayer × Jujutsu Kaisen · Voice Impression Community
           </p>
