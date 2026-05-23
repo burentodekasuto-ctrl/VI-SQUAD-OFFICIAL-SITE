@@ -242,9 +242,38 @@ export default function Home() {
             </div>
             <div className="mt-6 text-center">
               <p className="bracket-tag text-lg font-bold">［水晶1］ Sui.</p>
-              <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mt-1">
+              <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mt-1 mb-4">
                 Squad Leader
               </p>
+              
+              {/* ── SUI SOCIAL LINKS ── */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center items-center w-full max-w-[240px] sm:max-w-none mx-auto">
+                {/* TikTok Button */}
+                <a 
+                  href="https://www.tiktok.com/@suiren_2008?_r=1&_t=ZS-96bDR1QxUm7" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-xs uppercase tracking-widest font-semibold bg-white/5 border border-purple-500/30 hover:border-purple-400 hover:bg-purple-500/10 rounded transition-all text-gray-200 hover:text-white"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.03 1.6 4.17 1.13 1.2 2.75 1.86 4.38 2v3.83c-1.78-.02-3.52-.59-4.99-1.63v5.82c0 2.21-1.12 4.31-2.96 5.53-2.45 1.57-5.83 1.35-8.03-.52-2.18-1.93-2.61-5.18-1.02-7.59 1.41-2.07 4.02-3.09 6.46-2.52v3.94c-1.23-.33-2.57-.03-3.54.77-.96.88-1.22 2.33-.58 3.44.75 1.22 2.37 1.7 3.69 1.07.78-.41 1.26-1.23 1.27-2.12V0h-.29z" />
+                  </svg>
+                  TikTok
+                </a>
+
+                {/* Facebook Button */}
+                <a 
+                  href="https://www.facebook.com/ANIME.CURSE.WORLD.2008/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-xs uppercase tracking-widest font-semibold bg-white/5 border border-red-500/30 hover:border-red-400 hover:bg-red-500/10 rounded transition-all text-gray-200 hover:text-white"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
+                  </svg>
+                  Facebook
+                </a>
+              </div>
             </div>
           </div>
 
@@ -376,4 +405,5 @@ export default function Home() {
       </footer>
     </main>
   );
-}
+      }
+        
