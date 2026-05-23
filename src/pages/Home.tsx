@@ -85,15 +85,21 @@ function Particles() {
   );
 }
 
-// Transform routine to generate mathematical bold-sans lettering
+// Fixed robust mapping routine for mathematical bold-sans lettering
 function stylizeText(text: string) {
-  const normal = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  const boldSans = "𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣加入𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵";
-  
   return text.split('').map(char => {
-    const idx = normal.indexOf(char);
-    if (idx > -1) {
-      return boldSans.substring(idx * 2, (idx * 2) + 2);
+    const code = char.charCodeAt(0);
+    // Uppercase A-Z
+    if (code >= 65 && code <= 90) {
+      return String.fromCodePoint(0x1D5D4 + (code - 65));
+    }
+    // Lowercase a-z
+    if (code >= 97 && code <= 122) {
+      return String.fromCodePoint(0x1D5EE + (code - 97));
+    }
+    // Numbers 0-9
+    if (code >= 48 && code <= 57) {
+      return String.fromCodePoint(0x1D7EC + (code - 48));
     }
     return char;
   }).join('');
@@ -108,7 +114,7 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
 
   const stylizedName = inputName ? stylizeText(inputName) : "Sui";
-  const fullGeneratedName = `水晶 - 𝗦𝘂𝗶.`.replace("𝗦𝘂𝗶", stylizedName);
+  const fullGeneratedName = `水晶 - ${stylizedName}.`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(fullGeneratedName);
@@ -250,7 +256,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center w-full max-w-[240px] sm:max-w-none mx-auto">
                 {/* TikTok Button */}
                 <a 
-                  href="https://www.tiktok.com/@suiren_2008" 
+                  href="https://www.tiktok.com/@suiren_2008?_r=1&_t=ZS-96bDR1QxUm7" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-xs uppercase tracking-widest font-semibold bg-white/5 border border-purple-500/30 hover:border-purple-400 hover:bg-purple-500/10 rounded transition-all text-gray-200 hover:text-white"
@@ -405,5 +411,4 @@ export default function Home() {
       </footer>
     </main>
   );
-      }
-        
+            }
