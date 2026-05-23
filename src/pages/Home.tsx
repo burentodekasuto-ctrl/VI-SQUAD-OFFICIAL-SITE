@@ -250,7 +250,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center w-full max-w-[240px] sm:max-w-none mx-auto">
                 {/* TikTok Button */}
                 <a 
-                  href="https://www.tiktok.com/@suiren_2008?_r=1&_t=ZS-96bDR1QxUm7" 
+                  href="https://www.tiktok.com/@suiren_2008" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 py-2 text-xs uppercase tracking-widest font-semibold bg-white/5 border border-purple-500/30 hover:border-purple-400 hover:bg-purple-500/10 rounded transition-all text-gray-200 hover:text-white"
